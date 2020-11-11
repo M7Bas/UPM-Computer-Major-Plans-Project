@@ -294,16 +294,6 @@ class Window(Frame):
                     xCounter = 0
                     y = 130
                     x += 100
-        # self.AI382 = self.label2("1st sesmster :", 30, 160)
-        # self.AI316 = self.label2("AI 316", 30, 185)
-        # self.AI318 = self.label2("AI 318", 30, 210)
-        # self.AI312 = self.label2("AI 312", 30, 235)
-        # self.AI306 = self.label2("AI 306", 30, 260)
-
-
-
-
-
 
 
 
