@@ -13,6 +13,8 @@ class Window(Frame):
         self.CheckbuttonFont = font.Font(family='Helvetica', size=13, weight='bold')
         self.labelFont = font.Font(family='Helvetica', size=13, weight='bold')
 
+        self.backgroundImage()
+        
         self.startlabel = self.label1("Press START",20,120)
         self.startButton()
 
@@ -26,6 +28,11 @@ class Window(Frame):
     def setMasterUp(self):
         self.master.title("AI's Plan")
 
+    def backgroundImage(self):
+        label1 = Label(self,bg='#050627',height=520,width=400)
+        label1.place(x=0,y=0)
+
+
     def setImage1(self):
         image1 = Image.open("logo1.png")
         image1 = image1.resize((100,100), Image.ANTIALIAS)
@@ -37,26 +44,26 @@ class Window(Frame):
 
     def setImage2(self):
         image1 = Image.open("bar1.png")
-        image1 = image1.resize((1000,110), Image.ANTIALIAS) 
+        image1 = image1.resize((520,110), Image.ANTIALIAS) 
         bar = ImageTk.PhotoImage(image1)
 
         imageLabel = Label(self, image=bar)
         imageLabel.image = bar
-        imageLabel.place(relx=1, x =-2, y=0, anchor=NE) 
+        imageLabel.place(relx=1, x=0, y=0, anchor=NE) 
 
     def startButton(self):
-        self.startbutton = Button(self, text="Start", command=self.startPages)
+        self.startbutton = Button(self, text="Start", command=self.startPages, bg="#4CBB17", fg="white", relief=RIDGE)
         self.startbutton.place(relx = 0.5, rely = 0.9, anchor = CENTER)
         self.startbutton["font"] = self.CheckbuttonFont
 
     def label1(self, text, x ,y):
-        label1 = Label(self, text=f"{text}")
+        label1 = Label(self, text=f"{text}", bg="#050627", fg='white')
         label1.place(x=x ,y=y)
         label1["font"] = self.myFont
         return label1
 
     def label2(self, text, x ,y):
-        label1 = Label(self, text=f"{text}")
+        label1 = Label(self, text=f"{text}", bg="#050627", fg='white')
         label1.place(x=x ,y=y)
         label1["font"] = self.labelFont
         return label1
@@ -66,20 +73,21 @@ class Window(Frame):
         entry1.place(x=x,y=y)
 
     def button1(self, text, relx=0.8, rely = 0.9 ,anchor = CENTER):
-        button1 = Button(self, text=f"{text}", command=self.pages)
+        button1 = Button(self, text=f"{text}", command=self.pages, relief=RIDGE, bg="#4CBB17", fg="white")
         button1.place(relx = relx, rely = rely, anchor = anchor)
         button1["font"] = self.CheckbuttonFont
         return button1
 
     def quitButton(self, text, relx=0.8, rely = 0.9 ,anchor = CENTER):
-        button1 = Button(self, text=f"{text}", command=quit)
+        button1 = Button(self, text=f"{text}", command=quit, bg="#4CBB17", fg="white", relief=RIDGE)
         button1.place(relx = relx, rely = rely, anchor = anchor)
         button1["font"] = self.CheckbuttonFont
         return button1
 
     def checkbutton1(self, text, x, y):
         var = IntVar()
-        checkbutton1 = Checkbutton(self, text=f"{text}", variable=var)
+        checkbutton1 = Checkbutton(self, text=f"{text}", variable=var, bg="#050627", fg="white", cursor="hand1",
+                                         selectcolor="#4CBB17", activebackground="#050627", activeforeground="yellow")
         checkbutton1.place(x=x, y=y)
         checkbutton1["font"] = self.CheckbuttonFont
         return checkbutton1, var, text
@@ -228,7 +236,6 @@ class Window(Frame):
         self.AI407[0].destroy()
         self.AI417[0].destroy()
 
-
     def page8(self):
         self.AI492 = self.checkbutton1("AI 492", 30, 160)
         self.AI418 = self.checkbutton1("AI 418", 30, 185)
@@ -244,7 +251,7 @@ class Window(Frame):
         self.nextButton.destroy()
         self.skipButton.destroy()
 
-        self.finalPageLabel = self.label1("Here are the courses that remain for you",20,120)
+        self.finalPageLabel = self.label1("Here are the courses that remain for you :",20,120)
         self.quitButton1 = self.quitButton("Quit")
 
         courses =  (self.MATH101 ,
@@ -281,19 +288,41 @@ class Window(Frame):
                     self.AI492 ,
                     self.AI418 ,
                     self.AI438 )
+        
         x = 30
         xCounter = 0
-        y = 130
+        y = 155
+
+        coursesList = []
+
+        if self.MATH101[1].get() == 0:
+            coursesList.append(self.MATH101[2])
+        else :
+            if self.MATH102[1].get() == 0:
+                coursesList.append(self.MATH102[2])
+            else:
+                if self.MATH201[1].get() == 0:
+                    coursesList.append(self.MATH201[2])
+                if self.CS201[1].get() == 0:
+                    coursesList.append(self.CS201[2])
+
+
+            
 
         for course in courses:
             if course[1].get() == 0:
+                course = self.label2(f"{course[2]}",x,y)
+                # coursesList.append(course[2])
+                # if course
+
                 y += 25
                 xCounter += 1
-                course = self.label2(f"{course[2]}",x,y)
                 if xCounter == 7:
                     xCounter = 0
-                    y = 130
+                    y = 155
                     x += 100
+
+        # printTheCourses(coursesList)
 
 
 
