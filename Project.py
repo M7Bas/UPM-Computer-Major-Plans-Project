@@ -19,8 +19,8 @@ class Window(Frame):
         self.startButton()
 
         self.setImage2()
-        self.setImage1()
-        self.label1("Unversity of Prince Muqrin",17,50)
+        # self.setImage1()
+        # self.label1("Unversity of Prince Muqrin",17,50)
 
         self.pageNum=0
 
@@ -43,13 +43,13 @@ class Window(Frame):
         imageLabel.place(relx=1, x =-2, y=2, anchor=NE)    
 
     def setImage2(self):
-        image1 = Image.open("bar1.png")
+        image1 = Image.open("bar2.png")
         image1 = image1.resize((520,110), Image.ANTIALIAS) 
         bar = ImageTk.PhotoImage(image1)
 
-        imageLabel = Label(self, image=bar)
+        imageLabel = Label(self, image=bar, bg="#050627")
         imageLabel.image = bar
-        imageLabel.place(relx=1, x=0, y=0, anchor=NE) 
+        imageLabel.place( x=-2, y=-2) 
 
     def startButton(self):
         self.startbutton = Button(self, text="Start", command=self.startPages, bg="#4CBB17", fg="white", relief=RIDGE)
@@ -305,13 +305,38 @@ class Window(Frame):
                     coursesList.append(self.MATH201[2])
                 if self.CS201[1].get() == 0:
                     coursesList.append(self.CS201[2])
+                if self.STAT232[1].get() == 0:
+                    coursesList.append(self.STAT232[2])
+                if self.MATH204[1].get() ==0:
+                    coursesList.append(self.MATH204[2])
+                else:
+                    if self.AI305[1].get() ==0:
+                        coursesList.append(self.AI305[2])
+                    else:
+                        if self.AI318[1].get() ==0:
+                            coursesList.append(self.AI318[2])
+                        if self.AI312[1].get() ==0:
+                            coursesList.append(self.AI312[2])
+                        if self.AI306[1].get() ==0:
+                            coursesList.append(self.AI306[2])
+                        if self.AI417[1].get() ==0:
+                            coursesList.append(self.AI417[2])
+                    if self.AI385[1].get() ==0:
+                        coursesList.append(self.AI385[2])
+                    if self.AI361[1].get() ==0:
+                        coursesList.append(self.AI361[2])
+                if self.MATH303[1].get() ==0:
+                    coursesList.append(self.MATH303[2])
+                else:
+                    if self.AI316[1].get() ==0:
+                        coursesList.append(self.AI316[2])
+                    
 
 
-            
+        coursesList.sort()   
 
-        for course in courses:
-            if course[1].get() == 0:
-                course = self.label2(f"{course[2]}",x,y)
+        for course in coursesList:
+                self.label2(course,x,y)
                 # coursesList.append(course[2])
                 # if course
 
@@ -321,6 +346,20 @@ class Window(Frame):
                     xCounter = 0
                     y = 155
                     x += 100
+
+
+        # for course in courses:
+        #     if course[1].get() == 0:
+        #         course = self.label2(f"{course[2]}",x,y)
+        #         # coursesList.append(course[2])
+        #         # if course
+
+        #         y += 25
+        #         xCounter += 1
+        #         if xCounter == 7:
+        #             xCounter = 0
+        #             y = 155
+        #             x += 100
 
         # printTheCourses(coursesList)
 
