@@ -14,72 +14,49 @@ class Window(Frame):
         self.labelFont = font.Font(family='Helvetica', size=13, weight='bold')
 
         self.backgroundImage()
-        
-        self.startlabel = self.label1("Press START",20,120)
-        self.startButton()
-
-        self.setImage2()
-        # self.setImage1()
-        # self.label1("Unversity of Prince Muqrin",17,50)
+        self.setBar1()
+        self.firstPage()
 
         self.pageNum=0
 
-        
     def setMasterUp(self):
-        self.master.title("AI's Plan")
+        self.master.title("UPM Computer Major Plans")
 
     def backgroundImage(self):
-        label1 = Label(self,bg='#050627',height=520,width=400)
-        label1.place(x=0,y=0)
+        label1 = Label(self, bg="#050627", height=520, width=400)
+        label1.place(x=0, y=0)  
 
-
-    def setImage1(self):
-        image1 = Image.open("logo1.png")
-        image1 = image1.resize((100,100), Image.ANTIALIAS)
-        UPM = ImageTk.PhotoImage(image1)
-
-        imageLabel = Label(self, image=UPM)
-        imageLabel.image = UPM
-        imageLabel.place(relx=1, x =-2, y=2, anchor=NE)    
-
-    def setImage2(self):
+    def setBar1(self):
         image1 = Image.open("bar2.png")
         image1 = image1.resize((520,110), Image.ANTIALIAS) 
         bar = ImageTk.PhotoImage(image1)
 
         imageLabel = Label(self, image=bar, bg="#050627")
         imageLabel.image = bar
-        imageLabel.place( x=-2, y=-2) 
+        imageLabel.place( x=-2, y=-2)
 
-    def startButton(self):
-        self.startbutton = Button(self, text="Start", command=self.startPages, bg="#4CBB17", fg="white", relief=RIDGE)
-        self.startbutton.place(relx = 0.5, rely = 0.9, anchor = CENTER)
-        self.startbutton["font"] = self.CheckbuttonFont
+    def firstPage(self): # Here is the first page function
+        self.startlabel = self.label1("Press START",20,120)
+        self.startButton = self.button1("Start", self.startPages, relx = 0.5)
 
-    def label1(self, text, x ,y):
+    def label1(self, text, x ,y): # This label with 18 size font
         label1 = Label(self, text=f"{text}", bg="#050627", fg='white')
         label1.place(x=x ,y=y)
         label1["font"] = self.myFont
         return label1
 
-    def label2(self, text, x ,y):
+    def label2(self, text, x ,y): # This label with 13 size font
         label1 = Label(self, text=f"{text}", bg="#050627", fg='white')
         label1.place(x=x ,y=y)
         label1["font"] = self.labelFont
         return label1
 
-    def entry1(self, width, x, y):
-        entry1 = Entry(self, width=width)
-        entry1.place(x=x,y=y)
+    # def entry1(self, width, x, y):
+    #     entry1 = Entry(self, width=width)
+    #     entry1.place(x=x,y=y)
 
-    def button1(self, text, relx=0.8, rely = 0.9 ,anchor = CENTER):
-        button1 = Button(self, text=f"{text}", command=self.pages, relief=RIDGE, bg="#4CBB17", fg="white")
-        button1.place(relx = relx, rely = rely, anchor = anchor)
-        button1["font"] = self.CheckbuttonFont
-        return button1
-
-    def quitButton(self, text, relx=0.8, rely = 0.9 ,anchor = CENTER):
-        button1 = Button(self, text=f"{text}", command=quit, bg="#4CBB17", fg="white", relief=RIDGE)
+    def button1(self, text, command, relx=0.8, rely = 0.9 ,anchor = CENTER):
+        button1 = Button(self, text=f"{text}", command=command, relief=RIDGE, bg="#4CBB17", fg="white")
         button1.place(relx = relx, rely = rely, anchor = anchor)
         button1["font"] = self.CheckbuttonFont
         return button1
@@ -93,12 +70,12 @@ class Window(Frame):
         return checkbutton1, var, text
     
     def startPages(self):
-        self.startbutton.destroy()
+        self.startButton.destroy()
         self.startlabel.destroy()
 
         self.firstPageLabel = self.label1("Check the courses you have passed",20,120)
-        self.nextButton = self.button1("Next")
-        self.skipButton = self.button1("Skip all", relx=0.67)
+        self.nextButton = self.button1("Next",self.pages)
+        self.skipButton = self.button1("Skip all", self.pages, relx=0.67)
         self.pages()
 
     def pages(self):
@@ -235,6 +212,7 @@ class Window(Frame):
         self.AI491[0].destroy()
         self.AI407[0].destroy()
         self.AI417[0].destroy()
+        
 
     def page8(self):
         self.AI492 = self.checkbutton1("AI 492", 30, 160)
@@ -252,46 +230,7 @@ class Window(Frame):
         self.skipButton.destroy()
 
         self.finalPageLabel = self.label1("Here are the courses that remain for you :",20,120)
-        self.quitButton1 = self.quitButton("Quit")
-
-        courses =  (self.MATH101 ,
-                    self.PHYS101 ,
-                    self.CS111   ,
-                    self.ENGL101 ,
-                    self.MATH102 ,
-                    self.PHYS102 ,
-                    self.CS112 ,
-                    self.ENGL102 ,
-                    self.MATH201 ,
-                    self.CS321 ,
-                    self.CS201 ,
-                    self.CS211 ,
-                    self.CS351 ,
-                    self.STAT232 ,
-                    self.MATH204 ,
-                    self.AI372 ,
-                    self.ENGL201 ,
-                    self.CS332 ,
-                    self.MATH303 ,
-                    self.AI381 ,
-                    self.AI305 ,
-                    self.AI385 ,
-                    self.AI361 ,
-                    self.AI382 ,
-                    self.AI316 ,
-                    self.AI318 ,
-                    self.AI312 ,
-                    self.AI306 ,
-                    self.AI491 ,
-                    self.AI407 ,
-                    self.AI417 ,
-                    self.AI492 ,
-                    self.AI418 ,
-                    self.AI438 )
-        
-        x = 30
-        xCounter = 0
-        y = 155
+        self.quitButton1 = self.button1("Quit", quit)
 
         coursesList = []
 
@@ -307,33 +246,76 @@ class Window(Frame):
                     coursesList.append(self.CS201[2])
                 if self.STAT232[1].get() == 0:
                     coursesList.append(self.STAT232[2])
-                if self.MATH204[1].get() ==0:
+                if self.MATH204[1].get() == 0:
                     coursesList.append(self.MATH204[2])
                 else:
-                    if self.AI305[1].get() ==0:
+                    if self.AI305[1].get() == 0:
                         coursesList.append(self.AI305[2])
                     else:
-                        if self.AI318[1].get() ==0:
+                        if self.AI318[1].get() == 0:
                             coursesList.append(self.AI318[2])
-                        if self.AI312[1].get() ==0:
+                        if self.AI312[1].get() == 0:
                             coursesList.append(self.AI312[2])
-                        if self.AI306[1].get() ==0:
+                        if self.AI306[1].get() == 0:
                             coursesList.append(self.AI306[2])
-                        if self.AI417[1].get() ==0:
+                        if self.AI417[1].get() == 0:
                             coursesList.append(self.AI417[2])
-                    if self.AI385[1].get() ==0:
+                    if self.AI385[1].get() == 0:
                         coursesList.append(self.AI385[2])
-                    if self.AI361[1].get() ==0:
+                    if self.AI361[1].get() == 0:
                         coursesList.append(self.AI361[2])
-                if self.MATH303[1].get() ==0:
+                if self.MATH303[1].get() == 0:
                     coursesList.append(self.MATH303[2])
                 else:
-                    if self.AI316[1].get() ==0:
+                    if self.AI316[1].get() == 0:
                         coursesList.append(self.AI316[2])
+                        
+        if self.PHYS101[1].get() == 0:
+            coursesList.append(self.PHYS101[2])
+        else:
+            if self.PHYS102[1].get() == 0:
+                coursesList.append(self.PHYS102[2])
+                
+        if self.ENGL101[1].get() == 0:
+            coursesList.append(self.ENGL101[2])
+        else:
+            if self.ENGL102[1].get() == 0:
+                coursesList.append(self.ENGL102[2])
+
+        if self.CS111[1].get() == 0:
+            coursesList.append(self.CS111[2])
+        else:
+            if self.CS112[1].get() == 0:
+                coursesList.append(self.CS112[2])
+            else:
+                if self.CS321[1].get() == 0:
+                    coursesList.append(self.CS321[2])
+                if self.CS211[1].get() == 0:
+                    coursesList.append(self.CS211[2])
+                else:
+                    if self.AI381[1].get() == 0:
+                        coursesList.append(self.AI381[2])
+                    else:
+                        if self.AI382[1].get() == 0:
+                            coursesList.append(self.AI382[2])
+                        else:
+                            if self.AI438[1].get() == 0:
+                                coursesList.append(self.AI438[2])
+
+                if self.CS351[1].get() == 0:
+                    coursesList.append(self.CS351[2])
+                if self.ENGL201[1].get() == 0:
+                    coursesList.append(self.ENGL201[2])
+                if self.CS332[1].get() == 0:
+                    coursesList.append(self.CS332[2])
                     
 
 
-        coursesList.sort()   
+        coursesList.sort()
+
+        x = 30
+        xCounter = 0
+        y = 155   
 
         for course in coursesList:
                 self.label2(course,x,y)
@@ -351,17 +333,6 @@ class Window(Frame):
         # for course in courses:
         #     if course[1].get() == 0:
         #         course = self.label2(f"{course[2]}",x,y)
-        #         # coursesList.append(course[2])
-        #         # if course
-
-        #         y += 25
-        #         xCounter += 1
-        #         if xCounter == 7:
-        #             xCounter = 0
-        #             y = 155
-        #             x += 100
-
-        # printTheCourses(coursesList)
 
 
 
