@@ -32,53 +32,53 @@ def pages(self):
         self.pageNum += 1
     
     elif self.pageNum == 1:
-        destryPage1(self)
+        destroyPage1(self)
         page2(self)
         self.pageNum += 1
     
     elif self.pageNum == 2:
-        destryPage2(self)
+        destroyPage2(self)
         page3(self)
         self.pageNum += 1
     
     elif self.pageNum == 3:
-        destryPage3(self)
+        destroyPage3(self)
         page4(self)
         self.pageNum += 1
     
     elif self.pageNum == 4:
-        destryPage4(self)
+        destroyPage4(self)
         page5(self)
         self.pageNum += 1
     
     elif self.pageNum == 5:
-        destryPage5(self)
+        destroyPage5(self)
         page6(self)
         self.pageNum += 1
     
     elif self.pageNum == 6:
-        destryPage6(self)
+        destroyPage6(self)
         page7(self)
         self.pageNum += 1
     
     elif self.pageNum == 7:
-        destryPage7(self)
+        destroyPage7(self)
         page8(self)
         self.pageNum += 1
     
     elif self.pageNum == 8:
-        destryPage8(self)
+        destroyPage8(self)
         finalPage(self)
 
 def skipAll(self):
-    destroyPagesTuple = (destryPage1,
-                        destryPage2,
-                        destryPage3,
-                        destryPage4,
-                        destryPage5,
-                        destryPage6,
-                        destryPage7,
-                        destryPage8,
+    destroyPagesTuple = (destroyPage1,
+                        destroyPage2,
+                        destroyPage3,
+                        destroyPage4,
+                        destroyPage5,
+                        destroyPage6,
+                        destroyPage7,
+                        destroyPage8,
                         finalPage)
 
     PagesTuple=(page1,
@@ -101,14 +101,14 @@ def skipAll(self):
                 pass
 
 def backToTheMainPage(self):
-    destroyPagesTuple = (destryPage1,
-                        destryPage2,
-                        destryPage3,
-                        destryPage4,
-                        destryPage5,
-                        destryPage6,
-                        destryPage7,
-                        destryPage8)
+    destroyPagesTuple = (destroyPage1,
+                        destroyPage2,
+                        destroyPage3,
+                        destroyPage4,
+                        destroyPage5,
+                        destroyPage6,
+                        destroyPage7,
+                        destroyPage8)
 
     for function in range(len(destroyPagesTuple)):
         try:
@@ -141,7 +141,7 @@ def page1(self):
     self.CS111   = self.checkbutton1("CS 111"  , 30, 210)
     self.ENGL101 = self.checkbutton1("ENGL 101", 30, 235)
     
-def destryPage1(self):
+def destroyPage1(self):
     self.MATH101[0].destroy()
     self.PHYS101[0].destroy()
     self.CS111[0].destroy()
@@ -153,7 +153,7 @@ def page2(self):
     self.CS112   = self.checkbutton1("CS 112"  , 30, 210)
     self.ENGL102 = self.checkbutton1("ENGL 102", 30, 235)
 
-def destryPage2(self):
+def destroyPage2(self):
     self.MATH102[0].destroy()
     self.PHYS102[0].destroy()
     self.CS112[0].destroy()
@@ -166,7 +166,7 @@ def page3(self):
     self.CS211   = self.checkbutton1("CS 211", 30, 235)
     self.CS351   = self.checkbutton1("CS 351", 30, 260)
 
-def destryPage3(self):
+def destroyPage3(self):
     self.MATH201[0].destroy()
     self.CS321[0].destroy()
     self.CS201[0].destroy()
@@ -180,7 +180,7 @@ def page4(self):
     self.ENGL201 = self.checkbutton1("ENGL 201", 30, 235)
     self.CS332   = self.checkbutton1("CS 332", 30, 260)
 
-def destryPage4(self):
+def destroyPage4(self):
     self.STAT232[0].destroy()
     self.MATH204[0].destroy()
     self.AI372[0].destroy()
@@ -194,7 +194,7 @@ def page5(self):
     self.AI385   = self.checkbutton1("AI 385", 30, 235)
     self.AI361   = self.checkbutton1("AI 361", 30, 260)
 
-def destryPage5(self):
+def destroyPage5(self):
     self.MATH303[0].destroy()
     self.AI381[0].destroy()
     self.AI305[0].destroy()
@@ -208,7 +208,7 @@ def page6(self):
     self.AI312 = self.checkbutton1("AI 312", 30, 235)
     self.AI306 = self.checkbutton1("AI 306", 30, 260)
 
-def destryPage6(self):
+def destroyPage6(self):
     self.AI382[0].destroy()
     self.AI316[0].destroy()
     self.AI318[0].destroy()
@@ -220,7 +220,7 @@ def page7(self):
     self.AI407 = self.checkbutton1("AI 407", 30, 185)
     self.AI417 = self.checkbutton1("AI 417", 30, 210)
 
-def destryPage7(self):
+def destroyPage7(self):
     self.AI491[0].destroy()
     self.AI407[0].destroy()
     self.AI417[0].destroy()
@@ -231,7 +231,7 @@ def page8(self):
     self.AI418 = self.checkbutton1("AI 418", 30, 185)
     self.AI438 = self.checkbutton1("AI 438", 30, 210)
 
-def destryPage8(self):
+def destroyPage8(self):
     self.AI492[0].destroy()
     self.AI418[0].destroy()
     self.AI438[0].destroy()
@@ -333,8 +333,6 @@ def finalPage(self):
 
     for course in coursesList:
             self.labelsList.append(self.label2(course,x,y))
-            # coursesList.append(course[2])
-            # if course
 
             y += 25
             xCounter += 1
