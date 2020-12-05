@@ -237,7 +237,85 @@ def finalPage(self):
     self.finalPageLabel = self.label1("These are the available courses",20,120)
     self.quitButton1 = self.button1("Quit", quit, relx=0.28)
 
-    coursesList = []     
+    coursesList = []
+
+    if self.ENGL101[1].get() == 0:
+        coursesList.append(self.ENGL101[2])
+    else:
+        if self.ENGL102[1].get() == 0:
+            coursesList.append(self.ENGL102[2])
+        else:
+            if self.ENGL201[1].get() == 0:
+                coursesList.append(self.ENGL201[2])
+
+    if self.PHYS101[1].get() == 0:
+        coursesList.append(self.PHYS101[2])
+    else:
+        if self.PHYS102[1].get() == 0:
+            coursesList.append(self.PHYS102[2])
+
+    if self.MATH101[1].get() == 0:
+        coursesList.append(self.MATH101[2])
+    else:
+        if self.MATH102[1].get() == 0:
+            coursesList.append(self.MATH102[2])
+        else:
+            if self.STAT232[1].get() == 0:
+                coursesList.append(self.STAT232[2])
+            else:
+                if self.FC421[1].get() == 0:
+                    coursesList.append(self.FC421[2])
+            if self.CS201[1].get() == 0:
+                coursesList.append(self.CS201[2])
+
+    if self.CS111[1].get() == 0:
+        coursesList.append(self.CS111[2])
+    else:
+        if self.CS112[1].get() == 0:
+            coursesList.append(self.CS112[2])
+        else:
+            if self.CS314[1].get() == 0:
+                coursesList.append(self.CS314[2])
+            else:
+                if self.FC311[1].get() == 0:
+                    coursesList.append(self.FC311[2])
+            if self.CS211[1].get() == 0:
+                coursesList.append(self.CS211[2])
+            if self.CS351[1].get() == 0:
+                coursesList.append(self.CS351[2])
+            else:
+                if self.CS262[1].get() == 0:
+                    coursesList.append(self.CS262[2])
+            if self.CS221[1].get() == 0:
+                coursesList.append(self.CS221[2])
+            else:
+                if self.CS232[1].get() == 0:
+                    coursesList.append(self.CS232[2])
+                else:
+                    if self.FC304[1].get() == 0:
+                        coursesList.append(self.FC304[2])
+                    if self.FC381.get() == 0:
+                        coursesList.append(self.FC381[2])
+                    if self.FC302[1].get() == 0:
+                        coursesList.append(self.FC302[2])
+                    if self.FC313[1].get() == 0:
+                        coursesList.append(self.FC313[2])
+                    else:
+                        if self.FC472[1].get() == 0:
+                            coursesList.append(self.FC472[2])
+                        if self.FC411[1].get() == 0:
+                            coursesList.append(self.FC411[2])
+                        if self.FC382[1].get() == 0:
+                            coursesList.append(self.FC382[2])
+                        if self.FC462[1].get() == 0:
+                            coursesList.append(self.FC462[2])
+                if self.FC353[1].get() == 0:
+                    coursesList.append(self.FC353[2])
+                else:
+                    if self.FC332[1].get() == 0:
+                        coursesList.append(self.FC332[2])
+
+                        
     coursesList.sort()
 
     x = 30
